@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="Myapp">
+    <head>
+        <title>Cascading Dropdowns in AngularJs :devzone.co.in </title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+  <div ng-controller="cascadeController">
+      
+<!--
+      <div>
+                Testing: 
+                <select id="Testing" ng-model="test" ng-options="test for test in countries.India.Maharashtra">
+                    <option value=''>Select</option>
+                </select>
+            </div>
+-->
+            <div>
+                Country: 
+                <select id="country" ng-model="statess" ng-change='GetSelectedCountry()' ng-options="country for (country, statess) in countries">
+                    <option value=''>Select</option>
+                </select>
+            </div>
+     <!--  <div ng-repeat="s in statess">
+           <p>HI i am here {{s}}</p>
+      </div>-->
+         <div>
+                States: <select id="state" ng-disabled="!statess" ng-change='GetSelectedState()' ng-model="cities"  ng-options="state for (state,city) in statess"><option value=''>Select</option></select>
+            </div>
+            <div>
+                City: <select id="city" ng-disabled="!cities || !statess" ng-model="city"><option value=''>
+Select</option> <option ng-repeat="city in cities" value='{{city}}'>{{city}}</option></select>        
+            </div>
+<div>
+     <h1>Country: <span>{{strCountry}}</span></h1>
+       <h1>State: <span>{{strState}}</span></h1>
+     <h1>City: <span>{{city}}</span></h1>
+      </div>
+     
+        </div>
+ 
+    </body>
+</html>
